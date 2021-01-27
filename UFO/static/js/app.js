@@ -4,32 +4,38 @@ var tableData = data;
 // YOUR CODE HERE!
 var tbody = d3.select("tbody");
 
-// Try to build the table
-tbody.html("");
-// Step 1: Loop Through `data` and console.log each object
-// Step 2:  Use d3 to append one table row `tr` for each object
-// Step 3:  Use `Object.entries` to console.log each value
-// Step 4: Use d3 to append 1 cell per sighting report value (date/time, city, state, country, shape, and comment)
-// Step 5: Use d3 to update each cell's text with sighting report values
-// Simplefied using Arrow Functions
-// data.forEach((ufoData) => {
-//     var row = tbody.append("tr");
-//     Object.entries(ufoData).forEach(([key, value]) => {
-//       var cell = row.append("td");
-//       cell.text(value);
-//     });
-//   });
-
 // Create a function to build the table
-function buildTable() {
+// Scratch the object.entries and use object.value to append values only
+function buildTable(data){
     tbody.html(""); // Cleans the table first when the function is called each time
-    data.forEach((ufoData) => {
+    data.forEach(ufoData => {
+        console.table(ufoData);
         var row = tbody.append("tr");
-        Object.entries(ufoData).forEach(([key, value]) => {
-          var cell = row.append("td");
-          cell.text(value);
-        });
-      });
+
+       console.table(Object.values(ufoData));
+       Object.values(ufoData).forEach((value) => {
+           var cell = row.append("td");
+           cell.text(value);
+       });
+    });
 }
 
+// Create another function to trigger and display filtered data
+function buttonClick() {
+
+    d3.event.preventDefault()
+    var dateInput = d3.select("#datetime").property("value"); // Use D3 to select "Enter a Date"
+
+    var filterData = tableData;
+
+    // If filter the data to match the input date
+    if (dateInput) {
+        filterData = filterData.filter((row) => row.datetime === dateInput);
+    }
+
+    buildTable(filterData);
+}
+
+
+d3.selectAll("#filter-btn").on("click", buttonClick);
 buildTable(tableData);
