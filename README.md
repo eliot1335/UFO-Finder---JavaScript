@@ -1,9 +1,9 @@
-# JavaScript Homework - JavaScript and DOM Manipulation
+# UFO Finder - JavaScript and DOM Manipulation
 
-In this homework exercise, I will practice creating a script to populate a table from its data source to the given html template, and create a trigger that would react to the input and alter the table display.
+This is a JavaScript project which I will be creating a script to populate a table from its data source to the given html template, and create a trigger that would react to the input and alter the table display.
 
 
-## Level 1: Automatic Table and Date Search (Required)
+## Automatic Table and Date Search
 
 
 - Create a basic HTML web page or use the index.html file provided (we recommend building your own custom page!).
